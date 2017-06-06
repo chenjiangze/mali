@@ -10,7 +10,7 @@
     <url>https://github.com/chenjiangze/mali</url>  
   
     <build>  
-        <finalName>quick4j</finalName>  
+        <finalName>mali</finalName>  
         <plugins>  
             <!-- Mybatis generator代码生成插件 配置 -->  
             <plugin>  
