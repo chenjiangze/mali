@@ -4,13 +4,6 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
-import mali.web.model.Permission;
-import mali.web.model.Role;
-import mali.web.model.User;
-import mali.web.service.PermissionService;
-import mali.web.service.RoleService;
-import mali.web.service.UserService;
-
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;
@@ -21,6 +14,14 @@ import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.springframework.stereotype.Component;
 
+import mali.core.util.PasswordHash;
+import mali.web.model.Permission;
+import mali.web.model.Role;
+import mali.web.model.User;
+import mali.web.service.PermissionService;
+import mali.web.service.RoleService;
+import mali.web.service.UserService;
+
 /**
  * 用户身份验证,授权 Realm 组件
  * 
@@ -30,54 +31,54 @@ import org.springframework.stereotype.Component;
 @Component(value = "securityRealm")
 public class SecurityRealm extends AuthorizingRealm {
 
-    @Resource
-    private UserService userService;
+	@Resource
+	private UserService userService;
 
-    @Resource
-    private RoleService roleService;
+	@Resource
+	private RoleService roleService;
 
-    @Resource
-    private PermissionService permissionService;
+	@Resource
+	private PermissionService permissionService;
 
-    /**
-     * 权限检查
-     */
-    @Override
-    protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
-        SimpleAuthorizationInfo authorizationInfo = new SimpleAuthorizationInfo();
-        String username = String.valueOf(principals.getPrimaryPrincipal());
+	/**
+	 * 权限检查
+	 */
+	@Override
+	protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
+		SimpleAuthorizationInfo authorizationInfo = new SimpleAuthorizationInfo();
+		String username = String.valueOf(principals.getPrimaryPrincipal());
 
-        final User user = userService.selectByUsername(username);
-        final List<Role> roleInfos = roleService.selectRolesByUserId(user.getId());
-        for (Role role : roleInfos) {
-            // 添加角色
-            System.err.println(role);
-            authorizationInfo.addRole(role.getRoleSign());
+		final User user = userService.selectByUsername(username);
+		final List<Role> roleInfos = roleService.selectRolesByUserId(user.getId());
+		for (Role role : roleInfos) {
+			// 添加角色
+			System.err.println(role);
+			authorizationInfo.addRole(role.getRoleSign());
 
-            final List<Permission> permissions = permissionService.selectPermissionsByRoleId(role.getId());
-            for (Permission permission : permissions) {
-                // 添加权限
-                System.err.println(permission);
-                authorizationInfo.addStringPermission(permission.getPermissionSign());
-            }
-        }
-        return authorizationInfo;
-    }
+			final List<Permission> permissions = permissionService.selectPermissionsByRoleId(role.getId());
+			for (Permission permission : permissions) {
+				// 添加权限
+				System.err.println(permission);
+				authorizationInfo.addStringPermission(permission.getPermissionSign());
+			}
+		}
+		return authorizationInfo;
+	}
 
-    /**
-     * 登录验证
-     */
-    @Override
-    protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) throws AuthenticationException {
-        String username = String.valueOf(token.getPrincipal());
-        String password = new String((char[]) token.getCredentials());
-        // 通过数据库进行验证
-        final User authentication = userService.authentication(new User(username, password));
-        if (authentication == null) {
-            throw new AuthenticationException("用户名或密码错误.");
-        }
-        SimpleAuthenticationInfo authenticationInfo = new SimpleAuthenticationInfo(username, password, getName());
-        return authenticationInfo;
-    }
+	/**
+	 * 登录验证
+	 */
+	@Override
+	protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) throws AuthenticationException {
+		String username = String.valueOf(token.getPrincipal());
+		String password = new String((char[]) token.getCredentials());
+		// 通过数据库进行验证
+		final User authentication = userService.selectByUsername(username);
+		if (authentication == null || PasswordHash.validatePassword(password, authentication.getPassword())) {
+			throw new AuthenticationException("用户名或密码错误.");
+		}
+		SimpleAuthenticationInfo authenticationInfo = new SimpleAuthenticationInfo(username, password, getName());
+		return authenticationInfo;
+	}
 
 }

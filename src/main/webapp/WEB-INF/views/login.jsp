@@ -122,7 +122,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 	</form>
 	<!-- END FORGOT PASSWORD FORM -->
 	<!-- BEGIN REGISTRATION FORM -->
-	<form class="register-form" action="index.html" method="post">
+	<form class="register-form" id="register-form" action="rest/user/register" method="post">
 		<h3>注  册</h3>
 		<p>
 			 请输入您的个人信息:
@@ -462,7 +462,7 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 <script src="assets/plugins/uniform/jquery.uniform.min.js" type="text/javascript"></script>
 <!-- END CORE PLUGINS -->
 <!-- BEGIN PAGE LEVEL PLUGINS -->
-<script src="assets/plugins/jquery-validation/dist/jquery.validate.min.js" type="text/javascript"></script>
+<script src="assets/plugins/jquery-validation-1.16.0/dist/jquery.validate.min.js" type="text/javascript"></script>
 <script src="assets/plugins/backstretch/jquery.backstretch.min.js" type="text/javascript"></script>
 <script type="text/javascript" src="assets/plugins/select2/select2.min.js"></script>
 <!-- END PAGE LEVEL PLUGINS -->
@@ -476,6 +476,9 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
 		jQuery(document).ready(function() {     
 		  App.init();
 		  Login.init();
+		  $("#register-submit-btn").click(function(){
+			  $("#register-form").submit();
+		  })
 		});
 	</script>
 <!-- END JAVASCRIPTS -->
