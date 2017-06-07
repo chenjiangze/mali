@@ -17,8 +17,8 @@ import org.apache.ibatis.reflection.wrapper.ObjectWrapperFactory;
 import org.apache.ibatis.session.RowBounds;
 
 /**
- * @author StarZou
- * @since 2014年5月18日 下午1:36:08
+ * @author Vincent
+ * @since 2017年5月18日 下午1:36:08
  **/
 @Intercepts({ @Signature(type = ResultSetHandler.class, method = "handleResultSets", args = { Statement.class }) })
 public class PaginationResultSetHandlerInterceptor implements Interceptor {

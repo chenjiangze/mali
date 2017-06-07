@@ -15,8 +15,8 @@ import org.springframework.stereotype.Service;
 /**
  * 权限Service实现类
  *
- * @author StarZou
- * @since 2014年6月10日 下午12:05:03
+ * @author Vincent
+ * @since 2017年6月10日 下午12:05:03
  */
 @Service
 public class PermissionServiceImpl extends GenericServiceImpl<Permission, Long> implements PermissionService {

@@ -5,8 +5,8 @@ import java.util.Date;
 /**
  * 用户模型
  * 
- * @author StarZou
- * @since 2014年7月5日 下午12:07:20
+ * @author Vincent
+ * @since 2017年7月5日 下午12:07:20
  **/
 public class User {
     private Long id;

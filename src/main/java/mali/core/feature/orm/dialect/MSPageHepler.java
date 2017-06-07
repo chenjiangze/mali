@@ -4,8 +4,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * @author StarZou
- * @since 2014年5月18日 下午1:32:42
+ * @author Vincent
+ * @since 2017年5月18日 下午1:32:42
  **/
 public class MSPageHepler {
     /**

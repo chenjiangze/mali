@@ -4,8 +4,8 @@ package mali.core.entity;
 /**
  * JSONResult : Response JSONResult for RESTful,封装返回JSON格式的数据
  *
- * @author StarZou
- * @since 2014年5月26日 上午10:51:46
+ * @author Vincent
+ * @since 2017年5月26日 上午10:51:46
  */
 
 public class JSONResult<T> extends Result {

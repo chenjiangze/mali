@@ -15,8 +15,8 @@ import org.springframework.stereotype.Service;
 /**
  * 角色Service实现类
  *
- * @author StarZou
- * @since 2014年6月10日 下午4:16:33
+ * @author Vincent
+ * @since 2017年6月10日 下午4:16:33
  */
 @Service
 public class RoleServiceImpl extends GenericServiceImpl<Role, Long> implements RoleService {

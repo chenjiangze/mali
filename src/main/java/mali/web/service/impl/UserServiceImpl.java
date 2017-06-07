@@ -16,8 +16,8 @@ import org.springframework.stereotype.Service;
 /**
  * 用户Service实现类
  *
- * @author StarZou
- * @since 2014年7月5日 上午11:54:24
+ * @author Vincent
+ * @since 2017年7月5日 上午11:54:24
  */
 @Service
 public class UserServiceImpl extends GenericServiceImpl<User, Long> implements UserService {

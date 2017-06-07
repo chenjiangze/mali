@@ -6,8 +6,8 @@ import mali.web.model.User;
 /**
  * 用户 业务 接口
  * 
- * @author StarZou
- * @since 2014年7月5日 上午11:53:33
+ * @author Vincent
+ * @since 2017年7月5日 上午11:53:33
  **/
 public interface UserService extends GenericService<User, Long> {
 

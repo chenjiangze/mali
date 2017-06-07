@@ -1,8 +1,8 @@
 package mali.core.feature.orm.dialect;
 
 /**
- * @author StarZou
- * @since 2014年5月18日 下午1:33:17
+ * @author Vincent
+ * @since 2017年5月18日 下午1:33:17
  **/
 public class OracleDialect extends Dialect {
 

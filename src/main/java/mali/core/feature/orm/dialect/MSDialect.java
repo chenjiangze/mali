@@ -3,8 +3,8 @@ package mali.core.feature.orm.dialect;
 /**
  * MSSQL 数据库方言
  * 
- * @author StarZou
- * @since 2014年5月18日 下午1:32:33
+ * @author Vincent
+ * @since 2017年5月18日 下午1:32:33
  **/
 public class MSDialect extends Dialect {
 

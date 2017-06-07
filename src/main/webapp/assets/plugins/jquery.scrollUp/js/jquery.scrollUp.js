@@ -4,7 +4,7 @@
  Author: Mark Goodyear - http://markgoodyear.com
  Git: https://github.com/markgoodyear/scrollup
 
- Copyright 2014 Mark Goodyear.
+ Copyright 2017 Mark Goodyear.
  Licensed under the MIT license
  http://www.opensource.org/licenses/mit-license.php
 

@@ -617,7 +617,7 @@ test("iban", function() {
 	ok( method( "CY17 0020 0128 0000 0012 0052 7600"), "Valid IBAN - CY");
 	ok( method( "CZ65 0800 0000 1920 0014 5399"), "Valid IBAN - CZ");
 	ok( method( "DK50 0040 0440 1162 43"), "Valid IBAN - DK");
-	ok( method( "EE38 2200 2210 2014 5685"), "Valid IBAN - EE");
+	ok( method( "EE38 2200 2210 2017 5685"), "Valid IBAN - EE");
 	ok( method( "FO97 5432 0388 8999 44"), "Valid IBAN - FO");
 	ok( method( "FI21 1234 5600 0007 85"), "Valid IBAN - FI");
 	ok( method( "FR14 2004 1010 0505 0001 3M02 606"), "Valid IBAN - FR");

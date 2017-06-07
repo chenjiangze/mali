@@ -3,8 +3,8 @@ package mali.core.feature.orm.dialect;
 /**
  * 数据库方言抽象类
  * 
- * @author StarZou
- * @since 2014年5月18日 下午1:32:03
+ * @author Vincent
+ * @since 2017年5月18日 下午1:32:03
  **/
 public abstract class Dialect {
 

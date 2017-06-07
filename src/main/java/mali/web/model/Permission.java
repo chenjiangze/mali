@@ -3,8 +3,8 @@ package mali.web.model;
 /**
  * 权限模型
  * 
- * @author StarZou
- * @since 2014年7月17日 下午1:02:55
+ * @author Vincent
+ * @since 2017年7月17日 下午1:02:55
  **/
 public class Permission {
     private Long id;

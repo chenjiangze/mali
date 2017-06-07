@@ -13,9 +13,9 @@ MySQL - 5.5.27 : Database - quick4j
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
-CREATE DATABASE /*!32312 IF NOT EXISTS*/`quick4j` /*!40100 DEFAULT CHARACTER SET utf8 */;
+CREATE DATABASE /*!32312 IF NOT EXISTS*/`mali` /*!40100 DEFAULT CHARACTER SET utf8 */;
 
-USE `quick4j`;
+USE `mali`;
 
 /*Table structure for table `permission` */
 
@@ -79,7 +79,7 @@ CREATE TABLE `user` (
 
 /*Data for the table `user` */
 
-insert  into `user`(`id`,`username`,`password`,`state`,`create_time`) values (1,'starzou','8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92',NULL,'2014-07-17 12:59:08');
+insert  into `user`(`id`,`username`,`password`,`state`,`create_time`) values (1,'Vincent','8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92',NULL,'2017-07-17 12:59:08');
 
 /*Table structure for table `user_role` */
 

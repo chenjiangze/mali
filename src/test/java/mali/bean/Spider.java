@@ -13,8 +13,8 @@ import org.springframework.stereotype.Component;
 /**
  * Spider : 爬虫类, 此类只为说明Spring 一些使用方法
  *
- * @author StarZou
- * @since 2014-10-27 22:40
+ * @author Vincent
+ * @since 2017-10-27 22:40
  */
 
 @Component

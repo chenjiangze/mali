@@ -9,8 +9,8 @@ import javax.annotation.Resource;
 /**
  * SpiderTest : 爬虫测试类
  *
- * @author StarZou
- * @since 2014-10-27 22:44
+ * @author Vincent
+ * @since 2017-10-27 22:44
  */
 public class SpiderTest extends TestSupport {
 

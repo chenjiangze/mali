@@ -147,7 +147,7 @@ var FormComponents = function () {
                 startDate: moment().subtract('days', 29),
                 endDate: moment(),
                 minDate: '01/01/2012',
-                maxDate: '12/31/2014',
+                maxDate: '12/31/2017',
             },
             function (start, end) {
                 console.log("Callback has been called!");
@@ -160,7 +160,7 @@ var FormComponents = function () {
                 startDate: moment().subtract('days', 29),
                 endDate: moment(),
                 minDate: '01/01/2012',
-                maxDate: '12/31/2014',
+                maxDate: '12/31/2017',
                 dateLimit: {
                     days: 60
                 },

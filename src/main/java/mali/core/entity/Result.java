@@ -5,8 +5,8 @@ import java.io.Serializable;
 /**
  * Result : 响应的结果对象
  *
- * @author StarZou
- * @since 2014-09-27 16:28
+ * @author Vincent
+ * @since 2017-09-27 16:28
  */
 public class Result implements Serializable {
     private static final long serialVersionUID = 6288374846131788743L;

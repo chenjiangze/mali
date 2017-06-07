@@ -27,8 +27,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * @author StarZou
- * @since 2014年5月18日 下午1:36:31
+ * @author Vincent
+ * @since 2017年5月18日 下午1:36:31
  **/
 @Intercepts({ @Signature(type = StatementHandler.class, method = "prepare", args = { Connection.class }) })
 public class PaginationStatementHandlerInterceptor implements Interceptor {

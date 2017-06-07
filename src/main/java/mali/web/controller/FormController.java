@@ -6,8 +6,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 /**
  * 表单控制器
  * 
- * @author starzou
- * @since 2014年4月13日 下午5:22:20
+ * @author Vincent
+ * @since 2017年4月13日 下午5:22:20
  **/
 @Controller
 @RequestMapping("/form")

@@ -13,8 +13,8 @@ import java.util.Set;
 /**
  * CookieUtils : 针对Http Cookie的工具类
  *
- * @author StarZou
- * @since 2014-09-28 22:31
+ * @author Vincent
+ * @since 2017-09-28 22:31
  */
 public class CookieUtils {
 

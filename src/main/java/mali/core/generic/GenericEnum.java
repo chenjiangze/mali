@@ -3,8 +3,8 @@ package mali.core.generic;
 /**
  * 所有自定义枚举类型实现该接口
  * 
- * @author StarZou
- * @since 2014年5月28日 上午10:07:20
+ * @author Vincent
+ * @since 2017年5月28日 上午10:07:20
  **/
 public interface GenericEnum {
 

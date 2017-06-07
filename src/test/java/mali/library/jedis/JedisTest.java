@@ -10,7 +10,7 @@ import javax.annotation.Resource;
 /**
  * JedisTest : 测试 jedis 功能
  *
- * @author StarZou
+ * @author Vincent
  * @since 2015-03-20 10:32
  */
 public class JedisTest extends TestSupport {
@@ -22,7 +22,7 @@ public class JedisTest extends TestSupport {
 
     @Test
     public void testSet() {
-        redisCache.cache("anchor", "StarZou", 1 * 60 * 24);
+        redisCache.cache("anchor", "Vincent", 1 * 60 * 24);
     }
 
     @Test

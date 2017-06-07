@@ -3,8 +3,8 @@ package mali.core.entity;
 /**
  * UserException : 用户自定义异常
  *
- * @author StarZou
- * @since 2014-09-27 18:12
+ * @author Vincent
+ * @since 2017-09-27 18:12
  */
 public class UserException extends RuntimeException {
 

@@ -19,7 +19,7 @@ public class UserServiceTest extends TestSupport {
 //    @Test
     public void test_insert() {
         User model = new User();
-        model.setUsername("starzou");
+        model.setUsername("Vincent");
         model.setPassword(ApplicationUtils.sha256Hex("123456"));
         model.setCreateTime(new Date());
         userService.insert(model);
@@ -29,7 +29,7 @@ public class UserServiceTest extends TestSupport {
     public void test_10insert() {
         for (int i = 0; i < 10; i++) {
             User model = new User();
-            model.setUsername("starzou" + i);
+            model.setUsername("Vincent" + i);
             model.setPassword(ApplicationUtils.sha256Hex("123456"));
             model.setCreateTime(new Date());
             userService.insert(model);
