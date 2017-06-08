@@ -23,7 +23,7 @@
     <!-- 自动扫描quick4j包 ,将带有注解的类 纳入spring容器管理 -->
     <context:component-scan base-package="mali"></context:component-scan>
 
-    <!-- 引入配置文件 -->
+    <!-- 引入配置文件 
     <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
         <property name="locations">
             <list>
@@ -31,6 +31,16 @@
             </list>
         </property>
     </bean>
+    -->
+    <!-- 在XML配置文件中加入外部属性文件，当然也可以指定外部文件的编码 -->
+	<bean id="propertyConfigurer" class="mali.core.util.PropertiesUtil">
+		<property name="locations">
+			<list>
+				<value>classpath*:application.properties</value>
+			</list>
+		</property>
+	</bean>
+    
 
     <!-- dataSource 配置 -->
     <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
