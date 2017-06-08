@@ -5,6 +5,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
+import mali.core.util.PasswordHash;
+import mali.web.model.User;
+import mali.web.security.PermissionSign;
+import mali.web.security.RoleSign;
+import mali.web.service.UserService;
+
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.UsernamePasswordToken;
@@ -17,12 +23,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-
-import mali.core.util.PasswordHash;
-import mali.web.model.User;
-import mali.web.security.PermissionSign;
-import mali.web.security.RoleSign;
-import mali.web.service.UserService;
 
 /**
  * 用户控制器
@@ -85,7 +85,7 @@ public class UserController {
 	}
 
 	/**
-	 * 用户登录
+	 * 用户注册
 	 * 
 	 * @param user
 	 * @param result

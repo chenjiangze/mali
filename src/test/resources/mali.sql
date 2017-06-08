@@ -79,7 +79,7 @@ CREATE TABLE `user` (
 
 /*Data for the table `user` */
 
-insert  into `user`(`id`,`username`,`password`,`state`,`create_time`) values (1,'Vincent','8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92',NULL,'2017-07-17 12:59:08');
+insert  into `user`(`id`,`username`,`password`,`state`,`create_time`) values (1,'Vincent','1000:f9f27649c458678d212dda195bc22876:a6dd5caa634a2e714382102a437866b6',NULL,'2017-07-17 12:59:08');
 
 /*Table structure for table `user_role` */
 

@@ -1,0 +1,5 @@
+#set($www="http://localhost:8080/mali")
+##set($upload=$static.upload)
+
+##set($qy_query='企业信息查询')
+##set($qy_grade='企业资信评估')
