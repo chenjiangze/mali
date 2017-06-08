@@ -1,2 +1,2 @@
 # mali
-这个是给 M、丽 同学当练习项目用的
+#this practice project is created for  M、丽
