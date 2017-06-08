@@ -17,6 +17,8 @@ import java.util.Locale;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import mali.core.entity.Constant;
+
 import org.jsoup.Connection;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -30,22 +32,15 @@ import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
-import com.common.Constant;
 
-/**
- * 
- * @author andyfang
- */
 public class StringUtil {
 
-	private static final Logger logger = LoggerFactory
-			.getLogger(StringUtil.class);
+	private static final Logger logger = LoggerFactory.getLogger(StringUtil.class);
 
 	public static final ObjectMapper JSON_MAPPER = new ObjectMapper();
 	public static final ObjectMapper JSON_MAPPER_NOTNULL = new ObjectMapper();
 
-	private static final Pattern charsetPattern = Pattern
-			.compile("(?i)\\bcharset=\\s*\"?([^\\s;\"]*)");
+	private static final Pattern charsetPattern = Pattern.compile("(?i)\\bcharset=\\s*\"?([^\\s;\"]*)");
 	private static String userAgent = Constant.USER_AGENT;
 
 	static {
@@ -53,15 +48,12 @@ public class StringUtil {
 		// SimpleModule module = new SimpleModule();
 		// module.addSerializer(CodeDescEnum.class, new CodeEnumSerializer());
 		// JSON_MAPPER_NOTNULL.registerModule(module);
-		JSON_MAPPER_NOTNULL.configure(
-				SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false);
-		JSON_MAPPER_NOTNULL.setDateFormat(new SimpleDateFormat(
-				"yyyy-MM-dd HH:mm:ss"));
+		JSON_MAPPER_NOTNULL.configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false);
+		JSON_MAPPER_NOTNULL.setDateFormat(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"));
 		JSON_MAPPER_NOTNULL.setLocale(Locale.getDefault());
 	}
 
-	public static String md5Str(InputStream ins)
-			throws NoSuchAlgorithmException, IOException {
+	public static String md5Str(InputStream ins) throws NoSuchAlgorithmException, IOException {
 		return bytesToHex(md5(ins));
 	}
 
@@ -69,8 +61,7 @@ public class StringUtil {
 		return bytesToHex(md5(data));
 	}
 
-	public static byte[] md5(InputStream ins) throws NoSuchAlgorithmException,
-			IOException {
+	public static byte[] md5(InputStream ins) throws NoSuchAlgorithmException, IOException {
 		java.security.MessageDigest md5 = MessageDigest.getInstance("MD5");
 		byte[] buf = new byte[1024 * 16];
 		while (true) {
@@ -116,8 +107,7 @@ public class StringUtil {
 		return doc;
 	}
 
-	public static Document getJsoupDocument(String url, IDocumentPrepared dp)
-			throws IOException {
+	public static Document getJsoupDocument(String url, IDocumentPrepared dp) throws IOException {
 		Connection con = Jsoup.connect(url).userAgent(userAgent);
 		con.request().timeout(10000);
 		Document doc = con.get();
@@ -130,13 +120,11 @@ public class StringUtil {
 		return doc;
 	}
 
-	public static Document getJsoupDocumentWithProxy(String targetUrl,
-			String ip, int port) throws IOException {
+	public static Document getJsoupDocumentWithProxy(String targetUrl, String ip, int port) throws IOException {
 		return getJsoupDocumentWithProxy(targetUrl, ip, port, null);
 	}
 
-	public static Document getJsoupDocumentWithProxy(String targetUrl,
-			String ip, int port, IDocumentPrepared dp) throws IOException {
+	public static Document getJsoupDocumentWithProxy(String targetUrl, String ip, int port, IDocumentPrepared dp) throws IOException {
 		HttpURLConnection uc = null;
 		InputStream inputStream = null;
 		try {
@@ -170,8 +158,7 @@ public class StringUtil {
 				bops.write(b, 0, count);
 			}
 
-			Document doc = parseDoc(bops.toByteArray(), 0, bops.size(),
-					charset, targetUrl, dp);
+			Document doc = parseDoc(bops.toByteArray(), 0, bops.size(), charset, targetUrl, dp);
 
 			bops.close();
 			// Document doc = Jsoup.parse(new String(bops.toByteArray(), 0,
@@ -179,8 +166,7 @@ public class StringUtil {
 
 			return doc;
 		} catch (Exception e) {
-			logger.error("Error occurs in method: getJsoupDocumentWithProxy, "
-					+ e.getMessage(), e);
+			logger.error("Error occurs in method: getJsoupDocumentWithProxy, " + e.getMessage(), e);
 			return null;
 		} finally {
 			if (inputStream != null) {
@@ -206,39 +192,33 @@ public class StringUtil {
 	 * @return
 	 * @throws UnsupportedEncodingException
 	 */
-	public static String encodeUrl(String content, String encoding)
-			throws UnsupportedEncodingException {
+	public static String encodeUrl(String content, String encoding) throws UnsupportedEncodingException {
 		String v = URLEncoder.encode(content, encoding);
 		StringBuilder sb = new StringBuilder();
 		for (int i = 0; i < v.length(); i++) {
 			char ch = v.charAt(i);
 			switch (ch) {
-			case '+':
-				sb.append("%20");
-				break;
-			default:
-				sb.append(ch);
-				break;
+				case '+':
+					sb.append("%20");
+					break;
+				default:
+					sb.append(ch);
+					break;
 			}
 		}
 		return sb.toString();
 	}
 
-	private static Document parseDoc(byte[] byteData, int offset, int size,
-			String charset, String baseUrl, IDocumentPrepared dp)
-			throws UnsupportedEncodingException {
+	private static Document parseDoc(byte[] byteData, int offset, int size, String charset, String baseUrl, IDocumentPrepared dp) throws UnsupportedEncodingException {
 		String docData = null;
 		Document doc = null;
 		if (charset == null) {
 			docData = new String(byteData, 0, size, Constant.CHARSET_NAME_UTF8);
 			doc = Jsoup.parse(docData, baseUrl);
-			Element meta = doc.select(
-					"meta[http-equiv=content-type], meta[charset]").first();
+			Element meta = doc.select("meta[http-equiv=content-type], meta[charset]").first();
 			if (meta != null) { // if not found, will keep utf-8 as best attempt
-				String foundCharset = meta.hasAttr("http-equiv") ? getCharsetFromContentType(meta
-						.attr("content")) : meta.attr("charset");
-				if (foundCharset != null && foundCharset.length() != 0
-						&& !foundCharset.equals(Constant.CHARSET_NAME_UTF8)) { // need
+				String foundCharset = meta.hasAttr("http-equiv") ? getCharsetFromContentType(meta.attr("content")) : meta.attr("charset");
+				if (foundCharset != null && foundCharset.length() != 0 && !foundCharset.equals(Constant.CHARSET_NAME_UTF8)) { // need
 					// to
 					// re-decode
 					charset = foundCharset;
@@ -382,15 +362,11 @@ public class StringUtil {
 	/**
 	 * 构建全站跟踪字符串。
 	 * 
-	 * @param app
-	 *            应用类型
-	 * @param channel
-	 *            渠道号
-	 * @param resource
-	 *            渠道范围内的资源
+	 * @param app 应用类型
+	 * @param channel 渠道号
+	 * @param resource 渠道范围内的资源
 	 */
-	public static String getTraceString(String app, String channel,
-			String resource) {
+	public static String getTraceString(String app, String channel, String resource) {
 		return app + "_" + channel + "_" + resource;
 	}
 
@@ -398,24 +374,19 @@ public class StringUtil {
 	 * cover parts of the src with '*'
 	 * 
 	 * @param src
-	 * @param starNum
-	 *            number of the '*'
-	 * @param start
-	 *            the start position(include),start with 0.
-	 * @param end
-	 *            the end position(include).
+	 * @param starNum number of the '*'
+	 * @param start the start position(include),start with 0.
+	 * @param end the end position(include).
 	 * @return
 	 * 
-	 *         for example: hideString("15821442258",6,2,9) the result is
-	 *         158******58 add by forgkan
+	 *         for example: hideString("15821442258",6,2,9) the result is 158******58 add by forgkan
 	 */
 	public static String hideString(String src, int starNum, int start, int end) {
 		if (isEmpty(src)) {
 			return src;
 		}
 
-		if (starNum < 0 || start < 0 || start >= src.length() || end < start
-				|| end > src.length()) {
+		if (starNum < 0 || start < 0 || start >= src.length() || end < start || end > src.length()) {
 			throw new IllegalArgumentException("Invalid paramter.");
 		}
 
@@ -424,8 +395,7 @@ public class StringUtil {
 			stars.append("*");
 		}
 
-		return src.substring(0, start + 1) + stars.toString()
-				+ src.substring(end);
+		return src.substring(0, start + 1) + stars.toString() + src.substring(end);
 	}
 
 	/**
@@ -451,8 +421,7 @@ public class StringUtil {
 	 * @throws JsonMappingException
 	 * @throws IOException
 	 */
-	public static <T extends Object> T trans2Object(String content,
-			Class<T> type) throws IOException {
+	public static <T extends Object> T trans2Object(String content, Class<T> type) throws IOException {
 		return JSON_MAPPER.readValue(content, type);
 	}
 

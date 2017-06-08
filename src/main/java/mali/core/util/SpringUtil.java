@@ -5,8 +5,6 @@ import org.springframework.context.ApplicationContext;
 /**
  * Spring Bean 管理工具
  * 
- * @author andyfang
- * 
  */
 public class SpringUtil {
 
@@ -18,8 +16,7 @@ public class SpringUtil {
 	/**
 	 * 根据指定bean名称，获取对应的实例对象
 	 * 
-	 * @param name
-	 *            bean的名称
+	 * @param name bean的名称
 	 * @return 对应bean的实例对象
 	 */
 	public static Object getBean(String name) {
@@ -37,11 +34,9 @@ public class SpringUtil {
 	}
 
 	/**
-	 * @param ctx
-	 *            the ctx to set
+	 * @param ctx the ctx to set
 	 */
-	public static void setApplicationContext(
-			ApplicationContext applicationContext) {
+	public static void setApplicationContext(ApplicationContext applicationContext) {
 		ctx = applicationContext;
 	}
 

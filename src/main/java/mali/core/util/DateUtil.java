@@ -7,7 +7,6 @@ import java.util.Date;
 
 /**
  * 
- * @author andyfang
  * 
  */
 public class DateUtil {

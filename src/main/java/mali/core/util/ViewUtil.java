@@ -2,9 +2,9 @@ package mali.core.util;
 
 import java.net.URLEncoder;
 
-import org.apache.commons.lang.StringUtils;
+import mali.core.entity.Constant;
 
-import com.common.Constant;
+import org.apache.commons.lang.StringUtils;
 
 /**
  * 视图层工具类
@@ -20,17 +20,14 @@ public class ViewUtil {
 	/**
 	 * 先截取,再转义
 	 * 
-	 * @param str
-	 *            要转义的字符
-	 * @param length
-	 *            截取字符长度
+	 * @param str 要转义的字符
+	 * @param length 截取字符长度
 	 */
 	public static String trimAndEscape(String str, int length) {
 		return trimAndEscape(str, length, true);
 	}
 
-	public static String trimAndEscape(String str, int length,
-			boolean isAddSuffix) {
+	public static String trimAndEscape(String str, int length, boolean isAddSuffix) {
 		String tmp = truncate(str, length, isAddSuffix);
 		if (tmp == null) {
 			return tmp;
@@ -46,13 +43,9 @@ public class ViewUtil {
 	/**
 	 * 按字节截断文本。
 	 * 
-	 * @param str
-	 *            需要处理的字符串
-	 * @param limit
-	 *            最大字节长度
-	 * @param addShenglu
-	 *            true：截断后添加自定义尾部文本，默认为"..."
-	 *            ,false:如果是刚好等于最大长度则截取到最大长度;否则否则截取到前一个字符
+	 * @param str 需要处理的字符串
+	 * @param limit 最大字节长度
+	 * @param addShenglu true：截断后添加自定义尾部文本，默认为"..." ,false:如果是刚好等于最大长度则截取到最大长度;否则否则截取到前一个字符
 	 * @return 截断后的文本。最后一个字符
 	 */
 	public static String truncate(String str, int limit, boolean addShenglu) {
@@ -101,21 +94,21 @@ public class ViewUtil {
 		for (int i = 0; i < content.length(); i++) {
 			char ch = content.charAt(i);
 			switch (ch) {
-			case '&':
-				sb.append("&amp;");
-				break;
-			case '<':
-				sb.append("&lt;");
-				break;
-			case '>':
-				sb.append("&gt;");
-				break;
-			case '"':
-				sb.append("&quot;");
-				break;
-			default:
-				sb.append(ch);
-				break;
+				case '&':
+					sb.append("&amp;");
+					break;
+				case '<':
+					sb.append("&lt;");
+					break;
+				case '>':
+					sb.append("&gt;");
+					break;
+				case '"':
+					sb.append("&quot;");
+					break;
+				default:
+					sb.append(ch);
+					break;
 			}
 		}
 		if (isWrapBr) {
@@ -143,24 +136,24 @@ public class ViewUtil {
 		for (int i = 0; i < p.length(); i++) {
 			char ch = p.charAt(i);
 			switch (ch) {
-			case '&':
-				sb.append("&amp;");
-				break;
-			case '<':
-				sb.append("&lt;");
-				break;
-			case '>':
-				sb.append("&gt;");
-				break;
-			case '"':
-				sb.append("&quot;");
-				break;
-			case '-':
-			case '/':
-				break;
-			default:
-				sb.append(ch);
-				break;
+				case '&':
+					sb.append("&amp;");
+					break;
+				case '<':
+					sb.append("&lt;");
+					break;
+				case '>':
+					sb.append("&gt;");
+					break;
+				case '"':
+					sb.append("&quot;");
+					break;
+				case '-':
+				case '/':
+					break;
+				default:
+					sb.append(ch);
+					break;
 			}
 		}
 
@@ -183,12 +176,12 @@ public class ViewUtil {
 		for (int i = 0; i < url.length(); i++) {
 			char ch = url.charAt(i);
 			switch (ch) {
-			case '+':
-				sb.append("%20");
-				break;
-			default:
-				sb.append(ch);
-				break;
+				case '+':
+					sb.append("%20");
+					break;
+				default:
+					sb.append(ch);
+					break;
 			}
 		}
 
@@ -215,12 +208,12 @@ public class ViewUtil {
 		for (int i = 0; i < v.length(); i++) {
 			char ch = v.charAt(i);
 			switch (ch) {
-			case '+':
-				sb.append("%20");
-				break;
-			default:
-				sb.append(ch);
-				break;
+				case '+':
+					sb.append("%20");
+					break;
+				default:
+					sb.append(ch);
+					break;
 			}
 		}
 
@@ -246,12 +239,12 @@ public class ViewUtil {
 		for (int i = 0; i < p.length(); i++) {
 			char ch = p.charAt(i);
 			switch (ch) {
-			case '-':
-			case '/':
-				break;
-			default:
-				sb.append(ch);
-				break;
+				case '-':
+				case '/':
+					break;
+				default:
+					sb.append(ch);
+					break;
 			}
 		}
 

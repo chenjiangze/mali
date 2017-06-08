@@ -10,19 +10,17 @@ import java.util.Enumeration;
 
 import javax.servlet.http.HttpServletRequest;
 
+import mali.core.entity.Constant;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.common.Constant;
-
 /**
  * 
- * @author andyfang
  */
 public class RequestUtil {
 
-	private static final Logger logger = LoggerFactory
-			.getLogger(RequestUtil.class);
+	private static final Logger logger = LoggerFactory.getLogger(RequestUtil.class);
 
 	private static final String GET = "GET";
 	private static final String USER_AGENT = "User-agent";
@@ -39,10 +37,8 @@ public class RequestUtil {
 			httpURLConnection = (HttpURLConnection) url.openConnection();
 			httpURLConnection.setConnectTimeout(5000);
 			httpURLConnection.setDoOutput(true);
-			if (!(Constant.USER_AGENT == null || Constant.USER_AGENT.trim()
-					.equals("")))
-				httpURLConnection.setRequestProperty(USER_AGENT,
-						Constant.USER_AGENT);
+			if (!(Constant.USER_AGENT == null || Constant.USER_AGENT.trim().equals("")))
+				httpURLConnection.setRequestProperty(USER_AGENT, Constant.USER_AGENT);
 			httpURLConnection.setRequestMethod(GET);
 			httpURLConnection.setReadTimeout(20000);
 			httpURLConnection.connect();
@@ -61,8 +57,7 @@ public class RequestUtil {
 			return new String(bops.toByteArray(), 0, bops.size(), encoding);
 		} catch (Exception e) {
 			logger.error("获取给定的资源失败:url ->" + u, e);
-			throw new RuntimeException("获取给定的资源失败:" + e.getMessage()
-					+ ", url -> " + u, e);
+			throw new RuntimeException("获取给定的资源失败:" + e.getMessage() + ", url -> " + u, e);
 		} finally {
 			if (bops != null) {
 				try {

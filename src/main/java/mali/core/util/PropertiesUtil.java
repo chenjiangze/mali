@@ -14,13 +14,10 @@ import org.springframework.beans.factory.config.PropertyPlaceholderConfigurer;
 
 /**
  * 
- * @author andyfang
  */
-public class PropertiesUtil extends PropertyPlaceholderConfigurer implements
-		Map<String, String> {
+public class PropertiesUtil extends PropertyPlaceholderConfigurer implements Map<String, String> {
 
-	private static final Logger logger = LoggerFactory
-			.getLogger(PropertiesUtil.class);
+	private static final Logger logger = LoggerFactory.getLogger(PropertiesUtil.class);
 
 	private static Map<String, String> ctxPropertiesMap;
 
@@ -28,9 +25,7 @@ public class PropertiesUtil extends PropertyPlaceholderConfigurer implements
 	}
 
 	@Override
-	protected void processProperties(
-			ConfigurableListableBeanFactory beanFactoryToProcess,
-			Properties props) throws BeansException {
+	protected void processProperties(ConfigurableListableBeanFactory beanFactoryToProcess, Properties props) throws BeansException {
 		super.processProperties(beanFactoryToProcess, props);
 		if (ctxPropertiesMap != null) {
 			logger.warn("The property map will be override!");
